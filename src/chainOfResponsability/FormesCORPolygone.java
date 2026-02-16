@@ -6,8 +6,15 @@ import request.Request;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Maillon s'occupant d'une demande de polygone
+ */
 public class FormesCORPolygone extends FormesCOR {
 
+    /**
+     * Constructeur hérité de FormesCOR
+     * @param suivant = null si aucun maillon restant, un maillon différent du COR sinon
+     */
     public FormesCORPolygone(FormesCOR suivant) {
         super(suivant);
     }

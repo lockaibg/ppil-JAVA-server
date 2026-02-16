@@ -3,8 +3,14 @@ package chainOfResponsability;
 import formes.*;
 import request.Request;
 
+/**
+ * maillon gérant une demande de triangle
+ */
 public class FormesCORTriangle extends FormesCOR {
-
+    /**
+     * Constructeur hérité de FormesCOR
+     * @param suivant = null si aucun maillon restant, un maillon différent du COR sinon
+     */
     public FormesCORTriangle(FormesCOR suivant) {
         super(suivant);
     }
