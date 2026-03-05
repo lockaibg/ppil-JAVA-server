@@ -8,7 +8,7 @@ import java.awt.*;
 public interface Shapes {
     /**
      * Permet de dessiner les formes enregistrées
-     * @param g
+     * @param g le canva de dessin utilisé
      */
     void draw(Graphics g);
 }

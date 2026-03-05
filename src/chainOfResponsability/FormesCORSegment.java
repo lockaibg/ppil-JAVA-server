@@ -3,8 +3,15 @@ package chainOfResponsability;
 import formes.*;
 import request.Request;
 
+/**
+ * Maillon s'occupant d'une demande de segment
+ */
 public class FormesCORSegment extends FormesCOR {
 
+    /**
+     * Constructeur hérité de FormesCOR
+     * @param suivant = null si aucun maillon restant, un maillon différent du COR sinon
+     */
     public FormesCORSegment(FormesCOR suivant) {
         super(suivant);
     }

@@ -2,8 +2,15 @@ package chainOfResponsability;
 import formes.*;
 import request.Request;
 
+/**
+ * Maillon gérant une demande de resctangle
+ */
 public class FormesCORSquare extends FormesCOR {
 
+    /**
+     * Constructeur hérité de FormesCOR
+     * @param suivant = null si aucun maillon restant, un maillon différent du COR sinon
+     */
     public FormesCORSquare(FormesCOR suivant) {
         super(suivant);
     }

@@ -3,6 +3,9 @@ package formes;
 import java.awt.*;
 import java.awt.geom.AffineTransform;
 
+/**
+ * objet représentant un oval (ou un rond si height = width)
+ */
 public class ShapeOval implements Shapes {
     private final ShapePoint centre;
     private final int radiusHeight;
@@ -10,6 +13,14 @@ public class ShapeOval implements Shapes {
     private final double angle;
     private final Color color;
 
+    /**
+     * Constructeur
+     * @param centre point central
+     * @param radiusWidth longueur entre le centre et le côté de la forme
+     * @param radiusHeight longueur entre le centre et la hauteure de la forme
+     * @param angle angle de rotation
+     * @param myColor Une couleur parmi celle de MyColor
+     */
     public ShapeOval(ShapePoint centre, int radiusWidth, int radiusHeight, int angle, MyColor myColor) {
         this.color = myColor.toAwt();
         this.centre = centre;

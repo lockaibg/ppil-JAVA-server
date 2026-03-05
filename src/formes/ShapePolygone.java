@@ -4,11 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.awt.*;
 
+/**
+ * Objet représentant un polygone quelconque
+ */
 public class ShapePolygone implements Shapes{
     private final List<ShapePoint> points = new ArrayList<>();
     private final List<ShapeSegment> segments = new ArrayList<>();
     private final Color color;
 
+    /**
+     * Constructeur créant dinamiquement les segments à partir de la liste de points
+     * @param points Les sommets de la forme
+     * @param myColor Une couleur parmi celle de MyColor
+     */
     public ShapePolygone(List<ShapePoint> points, MyColor myColor) {
         this.color = myColor.toAwt();
         this.points.addAll(points);

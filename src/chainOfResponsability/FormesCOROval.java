@@ -5,8 +5,15 @@ import formes.ShapePoint;
 import formes.ShapeRectangle;
 import request.Request;
 
+/**
+ * Classe gérant une demande de forme Oval
+ */
 public class FormesCOROval extends FormesCOR {
 
+    /**
+     * super du constucteur de FormesCOR
+     * @param suivant = null si aucun maillon restant, un maillon différent du COR sinon
+     */
     public FormesCOROval(FormesCOR suivant) {
         super(suivant);
     }

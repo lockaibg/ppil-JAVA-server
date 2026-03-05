@@ -3,6 +3,9 @@ package formes;
 import java.awt.*;
 import java.awt.geom.AffineTransform;
 
+/**
+ * Objet représentatn un rectangle
+ */
 public class ShapeRectangle implements Shapes{
 
     private final int gauche;
@@ -11,6 +14,16 @@ public class ShapeRectangle implements Shapes{
     private final double angle;
     private final int bas;
     private final Color color;
+
+    /**
+     * Constructeur
+     * @param gauche la coordonnée x des points de gauche
+     * @param haut la coordonnée y des points du haut
+     * @param droite la coordonnée x des points de droite
+     * @param bas la coordonnée y des points du bas
+     * @param angle l'angle de rotation
+     * @param color Une couleur parmi celle de MyColor
+     */
     public ShapeRectangle(int gauche, int haut, int droite, int bas, int angle, MyColor color) {
         this.color = color.toAwt();
         this.gauche = gauche;
