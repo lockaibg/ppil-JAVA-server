@@ -66,9 +66,14 @@ public class ShapeSegment implements Shapes {
 
     @Override
     public void refactor(double ordoX, double ordoY, double rapport) {
-        start.setX(start.getX() - ordoX * rapport);
-        end.setX(end.getX() - ordoX * rapport);
-        start.setY(start.getY() - ordoY * rapport);
-        end.setY(end.getY() - ordoY * rapport);
+        start.setX(((start.getX() - ordoX) * rapport) + add_top_left);
+        end.setX(((end.getX() - ordoX) * rapport) + add_top_left);
+        start.setY(size - ((start.getY() - ordoY) * rapport) + add_top_left);
+        end.setY(size - ((end.getY() - ordoY) * rapport) + add_top_left);
+        System.out.println(this.toString());
+    }
+    @Override
+    public String toString() {
+        return "segment start x : " + this.start.getX() + " start y : " + this.start.getY() + " end x :  " + this.end.getX() +  " end Y : " + this.end.getY() + "\n";
     }
 }

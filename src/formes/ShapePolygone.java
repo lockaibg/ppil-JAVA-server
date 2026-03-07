@@ -22,8 +22,9 @@ public class ShapePolygone implements Shapes{
         this.points.addAll(points);
         for(int i = 0; i < points.size(); i++){
             ShapePoint p1 = points.get(i);
-            ShapePoint p2 = points.get(i+1);
-            if(p2 != null) {
+
+            if(i+1 < points.size()) {
+                ShapePoint p2 = points.get(i+1);
                 segments.add(new ShapeSegment(p1, p2, myColor));
             } else {
                 segments.add(new ShapeSegment(p1, points.get(0), myColor));
@@ -43,7 +44,7 @@ public class ShapePolygone implements Shapes{
         double highest = points.get(0).getY();
         for(ShapePoint p : points){
             if(p.getY() > highest){
-                highest = p.getX();
+                highest = p.getY();
             }
         }
         return highest;
@@ -85,8 +86,20 @@ public class ShapePolygone implements Shapes{
     @Override
     public void refactor(double ordoX, double ordoY, double rapport) {
         for(ShapePoint p : points){
-            p.setX((p.getX() - ordoX) * rapport);
-            p.setY((p.getY() - ordoY) * rapport);
+            p.setX(((p.getX() - ordoX) * rapport) + add_top_left);
+            double y = (p.getY() - ordoY) * rapport;
+            p.setY(this.size - y + add_top_left);
         }
+        System.out.println(this.toString());
+    }
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Polygone {\n");
+        for(ShapePoint p : points){
+            sb.append("P1 x : " + p.getX() + " y : " + p.getY() + "\n");
+        }
+        sb.append("}\n");
+        return sb.toString();
     }
 }

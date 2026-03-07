@@ -27,8 +27,11 @@ public class FormesCORPolygone extends FormesCOR {
         } else {
             List<ShapePoint> points = new ArrayList<>();
             for(int i = 0; i < request.getParams().size(); i+=2) {
-                points.add(new ShapePoint(request.getParams().get(i), request.getParams().get(i+1)));
+                ShapePoint point = new ShapePoint(request.getParams().get(i), request.getParams().get(i+1));
+                System.out.println(point.toString() + i);
+                points.add(point);
             }
+            System.out.println("out");
             ShapePolygone sh = new ShapePolygone(points, request.getColor());
             request.addList(sh);
             return "POLYGONE";

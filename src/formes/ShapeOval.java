@@ -37,37 +37,64 @@ public class ShapeOval implements Shapes {
 
         g2d.setColor(color);
         g2d.rotate(angle, centre.getX(), centre.getY());
-        g2d.drawOval((int) centre.getX(), (int) centre.getY(), (int) radiusWidth, (int) radiusHeight);
-
+        g2d.drawOval(
+                (int) (centre.getX() - radiusWidth),
+                (int) (centre.getY() - radiusHeight),
+                (int) (2 * radiusWidth),
+                (int) (2 * radiusHeight)
+        );
         g2d.setTransform(old);
+        System.out.println("x : " +this.centre.getX() + " y : " + this.centre.getY() + " width " + this.radiusWidth + " height " + this.radiusHeight);
+    }
 
+    private double getRotatedHalfWidth() {
+        double cos = Math.cos(angle);
+        double sin = Math.sin(angle);
+        return Math.sqrt(radiusWidth * radiusWidth * cos * cos
+                + radiusHeight * radiusHeight * sin * sin);
+    }
+
+    /**
+     * Demi-hauteur de la bounding box après rotation
+     */
+    private double getRotatedHalfHeight() {
+        double cos = Math.cos(angle);
+        double sin = Math.sin(angle);
+        return Math.sqrt(radiusWidth * radiusWidth * sin * sin
+                + radiusHeight * radiusHeight * cos * cos);
     }
 
     @Override
     public double getTop() {
-        return centre.getY() +  radiusHeight;
+        return centre.getY() + getRotatedHalfHeight();
     }
 
     @Override
     public double getLeft() {
-        return centre.getX() -  radiusWidth;
+        return centre.getX() - getRotatedHalfWidth();
     }
 
     @Override
     public double getBottom() {
-        return  centre.getY() -  radiusHeight;
+        return centre.getY() - getRotatedHalfHeight();
     }
 
     @Override
     public double getRight() {
-        return centre.getX() + radiusWidth;
+        return centre.getX() + getRotatedHalfWidth();
     }
 
     @Override
     public void refactor(double ordoX, double ordoY, double rapport) {
-        this.centre.setX((this.centre.getX() - ordoX) * rapport);
-        this.centre.setY((this.centre.getY() - ordoY) * rapport);
+        this.centre.setX(((this.centre.getX() - ordoX) * rapport) + add_top_left);
+        double y = (this.centre.getY() - ordoY) * rapport;
+        this.centre.setY(this.size - y + add_top_left);
         this.radiusHeight = this.radiusHeight * rapport;
         this.radiusWidth = this.radiusWidth * rapport;
+        System.out.println(this.toString());
+    }
+    @Override
+    public String toString() {
+        return "OVAL x : " + this.centre.getX() + " y : " + this.centre.getY() + " width " + this.radiusWidth +  " height " + this.radiusHeight;
     }
 }

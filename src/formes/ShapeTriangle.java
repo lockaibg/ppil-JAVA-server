@@ -83,11 +83,16 @@ public class ShapeTriangle implements Shapes {
 
     @Override
     public void refactor(double ordoX, double ordoY, double rapport) {
-        this.a.setX((this.a.getX() - ordoX) * rapport);
-        this.a.setY((this.a.getY() - ordoY) * rapport);
-        this.b.setX((this.b.getX() - ordoX) * rapport);
-        this.b.setY((this.b.getY() - ordoY) * rapport);
-        this.c.setX((this.c.getX() - ordoX) * rapport);
-        this.c.setY((this.c.getY() - ordoY) * rapport);
+        this.a.setX(((this.a.getX() - ordoX) * rapport) + add_top_left);
+        this.a.setY(size - ((this.a.getY() - ordoY) * rapport) + add_top_left);
+        this.b.setX(((this.b.getX() - ordoX) * rapport) + add_top_left);
+        this.b.setY(size - ((this.b.getY() - ordoY) * rapport) + add_top_left);
+        this.c.setX(((this.c.getX() - ordoX) * rapport) + add_top_left);
+        this.c.setY(size - ((this.c.getY() - ordoY) * rapport) + add_top_left);
+        System.out.println(this.toString());
+    }
+    @Override
+    public String toString() {
+        return "TRIANGLE ax : " + this.a.getX() + " ay : " + a.getY() + " cx :" + this.c.getX() + " cy : " + c.getY() + " cx :" + this.c.getX() + " cy : " + c.getY();
     }
 }

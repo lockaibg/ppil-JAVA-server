@@ -34,11 +34,11 @@ public class RGConvertion {
      */
     public boolean convertable() {
         List<String> matchableString = new ArrayList<String>();
-        matchableString.add("^@OVAL ([0-9]{1,3}(.[0-9]{1,3})? ){5}[A-Z]+$");
-        matchableString.add("^@TRIANGLE ([0-9]{1,3}(.[0-9]{1,3})? ){6}[A-Z]+$");
-        matchableString.add("^@SEGMENT ([0-9]{1,3}(.[0-9]{1,3})? ){4}[A-Z]+$");
-        matchableString.add("^@RECTANGLE ([0-9]{1,3}(.[0-9]{1,3})? ){4}[A-Z]+$");
-        matchableString.add("^@POLYGONE ([0-9]{1,3}(.[0-9]{1,3})? ){8,}[A-Z]+$");
+        matchableString.add("^@OVAL (-?[0-9]{1,3}(.[0-9]{1,3})? ){5}[A-Z]+$");
+        matchableString.add("^@TRIANGLE (-?[0-9]{1,3}(.[0-9]{1,3})? ){6}[A-Z]+$");
+        matchableString.add("^@SEGMENT (-?[0-9]{1,3}(.[0-9]{1,3})? ){4}[A-Z]+$");
+        matchableString.add("^@RECTANGLE (-?[0-9]{1,3}(.[0-9]{1,3})? ){4}[A-Z]+$");
+        matchableString.add("^@POLYGONE (-?[0-9]{1,3}(.[0-9]{1,3})? ){8,}[A-Z]+$");
         matchableString.add("^@DESSINER$");
         //matchableString.add("^@GROUPE [a-zA-Z]{,20}$");
         for (String s : matchableString) {
@@ -54,11 +54,12 @@ public class RGConvertion {
      */
     public void convert() {
         String[] elems = stRequest.split(" ");
+        System.out.println(elems);
         String type = elems[0].substring(1);
         List<Double> params = new ArrayList<>();
         String myColor = "BLACK";
         for (String s : elems) {
-            if(s.matches("^[0-9]{1,3}(,[0-9]{1,3})?$")) {
+            if(s.matches("^-?[0-9]{1,3}(.[0-9]{1,3})?$")) {
                 params.add(Double.parseDouble(s));
             } else if(s.matches("[A-Z]*")) {
                 myColor = s;

@@ -24,7 +24,7 @@ public class ShapeRectangle implements Shapes{
      * @param angle l'angle de rotation
      * @param color Une couleur parmi celle de MyColor
      */
-    public ShapeRectangle(int gauche, int haut, int droite, int bas, int angle, MyColor color) {
+    public ShapeRectangle(double gauche, double haut, double droite, double bas, double angle, MyColor color) {
         this.color = color.toAwt();
         this.gauche = gauche;
         this.haut = haut;
@@ -74,9 +74,14 @@ public class ShapeRectangle implements Shapes{
 
     @Override
     public void refactor(double ordoX, double ordoY, double rapport) {
-        this.haut = (this.haut - ordoY) * rapport;
-        this.gauche = (gauche - ordoX) * rapport;
-        this.bas = (bas - ordoY) * rapport;
-        this.droite = (droite - ordoX) * rapport;
+        this.haut = size - ((this.haut - ordoY) * rapport) + add_top_left;
+        this.gauche = ((gauche - ordoX) * rapport) + add_top_left;
+        this.bas = size - ((bas - ordoY) * rapport) + add_top_left;
+        this.droite = ((droite - ordoX) * rapport) + add_top_left;
+        System.out.println(this.toString());
+    }
+    @Override
+    public String toString() {
+        return "RECTANGLE bas : " + this.bas + " haut : " + this.haut + " droite : " + this.droite + " gauche : " + this.gauche;
     }
 }

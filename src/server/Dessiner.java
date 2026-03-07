@@ -14,7 +14,7 @@ import java.util.List;
  * Class permettant le dessin
  */
 public class Dessiner extends Frame {
-    private int size = 800;
+    private int size = 560;
     private final ShapeList shapeList;
     private final Request rq;
 
@@ -26,10 +26,9 @@ public class Dessiner extends Frame {
         this.rq = rq;
         this.shapeList = rq.getList();
 
-        System.out.println(shapeList.toString());
         setTitle("Dessin");
         setSize(size, size);
-        setBackground(rq.getColor().toAwt());
+        //setBackground();
         setLayout(new FlowLayout());
 
         addWindowListener(new WindowAdapter() {
@@ -63,16 +62,19 @@ public class Dessiner extends Frame {
             if(sh.getTop() > top) {
                 top = sh.getTop();
             }
+            //
         }
+
         double lenght;
+
         if(top - bottom > right - left ) {
             lenght = top - bottom;
         } else {
             lenght = right - left;
         }
 
-        double facteur = size / lenght;
-
+        double facteur = 500 / lenght;
+        System.out.println("ordox: " + left + " ordoy: " + bottom + " facteur: " + facteur);
         for (Shapes sh : shapeList.getdraws()) {
             sh.refactor(left, bottom, facteur);
         }
