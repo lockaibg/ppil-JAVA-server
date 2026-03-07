@@ -12,7 +12,7 @@ public class Request {
 
     private final String type;
     //TODO pas sur que ça soit final ça faudrat vérifier avec les test
-    private final List<Integer> params = new ArrayList<Integer>();
+    private final List<Double> params = new ArrayList<Double>();
     private final MyColor color;
     private final ShapeList list;
 
@@ -27,25 +27,10 @@ public class Request {
         this.type = type;
         this.color = MyColor.valueOf(color);
         this.list = list;
-        double pixelSize = getPixelSize();
-        for(Double d : params) {
-            int nbPixel = (int) Math.round(d / pixelSize);
-            this.params.add(nbPixel);
+        for (Double d : params) {
+            this.params.add(d);
         }
     }
-
-    /**
-     * Fonction static permettant de trouver la taille d'un pixel sur un écran donné
-     * @return taille d'un pixel en cm
-     */
-    public static double getPixelSize() {
-        Toolkit toolkit = Toolkit.getDefaultToolkit();
-
-        int dpi = toolkit.getScreenResolution();
-
-        return 2.54 / dpi;
-    }
-
     /**
      * get du type de dessin
      * @return this.type
@@ -58,7 +43,7 @@ public class Request {
      * get de la liste des parametres entiers
      * @return this.params
      */
-    public List<Integer> getParams() {
+    public List<Double> getParams() {
         return params;
     }
 

@@ -11,4 +11,11 @@ public interface Shapes {
      * @param g le canva de dessin utilisé
      */
     void draw(Graphics g);
+
+    double getTop();
+    double getLeft();
+    double getBottom();
+    double getRight();
+
+    void refactor(double ordoX, double ordoY, double rapport);
 }

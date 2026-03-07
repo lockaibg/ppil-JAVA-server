@@ -8,11 +8,11 @@ import java.awt.geom.AffineTransform;
  */
 public class ShapeRectangle implements Shapes{
 
-    private final int gauche;
-    private final int haut;
-    private final int droite;
+    private double gauche;
+    private double haut;
+    private double droite;
     private final double angle;
-    private final int bas;
+    private double bas;
     private final Color color;
 
     /**
@@ -39,16 +39,44 @@ public class ShapeRectangle implements Shapes{
 
         AffineTransform old = g2d.getTransform(); // sauvegarde
 
-        int cx = (droite + gauche) / 2;
-        int cy = (haut + bas) / 2;
+        int cx = ((int) (droite + gauche)) / 2;
+        int cy = ((int) (haut + bas)) / 2;
 
-        int width = droite - gauche;
-        int height = bas - haut;
+        int width = (int) (droite - gauche);
+        int height = (int) (bas - haut);
 
         g2d.setColor(color);
         g2d.rotate(angle, cx, cy);
-        g2d.drawRect(gauche, haut, width, height);
+        g2d.drawRect((int) gauche, (int) haut, width, height);
 
         g2d.setTransform(old); // restauration
+    }
+
+    @Override
+    public double getTop() {
+        return haut;
+    }
+
+    @Override
+    public double getLeft() {
+        return gauche;
+    }
+
+    @Override
+    public double getBottom() {
+        return bas;
+    }
+
+    @Override
+    public double getRight() {
+        return droite;
+    }
+
+    @Override
+    public void refactor(double ordoX, double ordoY, double rapport) {
+        this.haut = (this.haut - ordoY) * rapport;
+        this.gauche = (gauche - ordoX) * rapport;
+        this.bas = (bas - ordoY) * rapport;
+        this.droite = (droite - ordoX) * rapport;
     }
 }

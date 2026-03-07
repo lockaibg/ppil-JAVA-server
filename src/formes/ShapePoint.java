@@ -6,15 +6,15 @@ import java.awt.*;
  * Objet représentant un point pour simplifier le code
  */
 public class ShapePoint {
-    private int x;
-    private final int y;
+    private double x;
+    private double y;
 
     /**
      * Constructeur
      * @param x coordonnée x
      * @param y coordonnée y
      */
-    public ShapePoint(int x, int y) {
+    public ShapePoint(double x, double y) {
         this.x = x;
         this.y = y;
     }
@@ -23,7 +23,7 @@ public class ShapePoint {
      * get du X
      * @return this.x
      */
-    public int getX() {
+    public double getX() {
         return x;
     }
 
@@ -31,7 +31,12 @@ public class ShapePoint {
      * get du Y
      * @return this.y
      */
-    public int getY() {
+    public double getY() {
         return y;
     }
+
+    public void setX(double x) {
+        this.x = x;
+    }
+    public void setY(double y) {}
 }

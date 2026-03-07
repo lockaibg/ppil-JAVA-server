@@ -27,3 +27,11 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+cmake-build-*/
+**/cmake-build-*/
+CMakeFiles/
+CMakeCache.txt
+Makefile
+Testing/
+*.cmake
+*.rsp

@@ -9,11 +9,12 @@ import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.List;
 
+
 /**
  * Class permettant le dessin
  */
 public class Dessiner extends Frame {
-
+    private int size = 800;
     private final ShapeList shapeList;
     private final Request rq;
 
@@ -27,7 +28,7 @@ public class Dessiner extends Frame {
 
         System.out.println(shapeList.toString());
         setTitle("Dessin");
-        setSize(rq.getParams().get(0), rq.getParams().get(1));
+        setSize(size, size);
         setBackground(rq.getColor().toAwt());
         setLayout(new FlowLayout());
 
@@ -44,7 +45,39 @@ public class Dessiner extends Frame {
 
     @Override
     public void paint(Graphics g) {
-        for(Shapes sh : shapeList.getdraws()) {
+        double left = shapeList.getdraws().get(0).getLeft();
+        double right = shapeList.getdraws().get(0).getRight();
+        double bottom = shapeList.getdraws().get(0).getBottom();
+        double top = shapeList.getdraws().get(0).getTop();
+        //déterminer les coordonnées relatives du plan
+        for (Shapes sh : shapeList.getdraws()) {
+            if(sh.getLeft() < left) {
+                left = sh.getLeft();
+            }
+            if(sh.getRight() > right) {
+                right = sh.getRight();
+            }
+            if(sh.getBottom() < bottom) {
+                bottom = sh.getBottom();
+            }
+            if(sh.getTop() > top) {
+                top = sh.getTop();
+            }
+        }
+        double lenght;
+        if(top - bottom > right - left ) {
+            lenght = top - bottom;
+        } else {
+            lenght = right - left;
+        }
+
+        double facteur = size / lenght;
+
+        for (Shapes sh : shapeList.getdraws()) {
+            sh.refactor(left, bottom, facteur);
+        }
+
+        for (Shapes sh : shapeList.getdraws()) {
             sh.draw(g);
         }
     }

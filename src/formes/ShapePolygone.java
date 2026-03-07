@@ -37,4 +37,56 @@ public class ShapePolygone implements Shapes{
             seg.draw(g);
         }
     }
+
+    @Override
+    public double getTop() {
+        double highest = points.get(0).getY();
+        for(ShapePoint p : points){
+            if(p.getY() > highest){
+                highest = p.getX();
+            }
+        }
+        return highest;
+    }
+
+    @Override
+    public double getLeft() {
+        double left = points.get(0).getX();
+        for(ShapePoint p : points){
+            if(p.getX() < left){
+                left = p.getX();
+            }
+        }
+        return left;
+    }
+
+    @Override
+    public double getBottom() {
+        double bottom = points.get(0).getY();
+        for(ShapePoint p : points){
+            if(p.getY() < bottom){
+                bottom = p.getY();
+            }
+        }
+        return bottom;
+    }
+
+    @Override
+    public double getRight() {
+        double right = points.get(0).getX();
+        for(ShapePoint p : points){
+            if(p.getX() > right){
+                right = p.getX();
+            }
+        }
+        return right;
+    }
+
+    @Override
+    public void refactor(double ordoX, double ordoY, double rapport) {
+        for(ShapePoint p : points){
+            p.setX((p.getX() - ordoX) * rapport);
+            p.setY((p.getY() - ordoY) * rapport);
+        }
+    }
 }

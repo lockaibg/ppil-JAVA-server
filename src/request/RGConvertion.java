@@ -39,7 +39,8 @@ public class RGConvertion {
         matchableString.add("^@SEGMENT ([0-9]{1,3}(.[0-9]{1,3})? ){4}[A-Z]+$");
         matchableString.add("^@RECTANGLE ([0-9]{1,3}(.[0-9]{1,3})? ){4}[A-Z]+$");
         matchableString.add("^@POLYGONE ([0-9]{1,3}(.[0-9]{1,3})? ){8,}[A-Z]+$");
-        matchableString.add("^@DESSINER ([0-9]{1,3}(.[0-9]{1,3})? ){2}[A-Z]+$");
+        matchableString.add("^@DESSINER$");
+        //matchableString.add("^@GROUPE [a-zA-Z]{,20}$");
         for (String s : matchableString) {
             if(stRequest.matches(s)) {
                 return true;

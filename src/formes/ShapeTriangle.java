@@ -31,9 +31,63 @@ public class ShapeTriangle implements Shapes {
         Graphics2D g2d = (Graphics2D) g;
 
         g2d.setColor(color);
-        g2d.drawLine(a.getX(), a.getY(), b.getX(), b.getY());
-        g2d.drawLine(b.getX(), b.getY(), c.getX(), c.getY());
-        g2d.drawLine(c.getX(), c.getY(), a.getX(), a.getY());
+        g2d.drawLine((int) a.getX(), (int) a.getY(), (int) b.getX(), (int) b.getY());
+        g2d.drawLine((int) b.getX(), (int) b.getY(), (int) c.getX(), (int) c.getY());
+        g2d.drawLine((int) c.getX(), (int) c.getY(), (int) a.getX(), (int) a.getY());
 
+    }
+
+    @Override
+    public double getTop() {
+        if (a.getY() > b.getY() && a.getY() > c.getY()) {
+            return a.getY();
+        } else if (b.getY() > a.getY() && b.getY() > c.getY()) {
+            return b.getY();
+        } else {
+            return c.getY();
+        }
+    }
+
+    @Override
+    public double getLeft() {
+        if (a.getX() < b.getX() && a.getX() < c.getX()) {
+            return a.getX();
+        } else if (b.getX() < a.getX() && b.getX() < c.getX()) {
+            return b.getX();
+        } else {
+            return c.getX();
+        }
+    }
+
+    @Override
+    public double getBottom() {
+        if (a.getY() < b.getY() && a.getY() < c.getY()) {
+            return a.getY();
+        } else if (b.getY() < a.getY() && b.getY() < c.getY()) {
+            return b.getY();
+        } else {
+            return c.getY();
+        }
+    }
+
+    @Override
+    public double getRight() {
+        if (a.getX() > b.getX() && a.getX() > c.getX()) {
+            return a.getX();
+        } else if (b.getX() > a.getX() && b.getX() > c.getX()) {
+            return b.getX();
+        } else {
+            return c.getX();
+        }
+    }
+
+    @Override
+    public void refactor(double ordoX, double ordoY, double rapport) {
+        this.a.setX((this.a.getX() - ordoX) * rapport);
+        this.a.setY((this.a.getY() - ordoY) * rapport);
+        this.b.setX((this.b.getX() - ordoX) * rapport);
+        this.b.setY((this.b.getY() - ordoY) * rapport);
+        this.c.setX((this.c.getX() - ordoX) * rapport);
+        this.c.setY((this.c.getY() - ordoY) * rapport);
     }
 }
