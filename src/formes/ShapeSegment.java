@@ -21,6 +21,7 @@ public class ShapeSegment implements Shapes {
         this.end = end;
     }
 
+
     @Override
     public void draw(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;

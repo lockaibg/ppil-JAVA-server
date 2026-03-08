@@ -47,6 +47,10 @@ public class ShapeOval implements Shapes {
         System.out.println("x : " +this.centre.getX() + " y : " + this.centre.getY() + " width " + this.radiusWidth + " height " + this.radiusHeight);
     }
 
+    /**
+     * calcule la demi-largeur de la boite après rotation
+     * @return Demi-largeur
+     */
     private double getRotatedHalfWidth() {
         double cos = Math.cos(angle);
         double sin = Math.sin(angle);
@@ -55,7 +59,8 @@ public class ShapeOval implements Shapes {
     }
 
     /**
-     * Demi-hauteur de la bounding box après rotation
+     * calcule la demi-hauteur de la boite après rotation
+     * @return Demi-hauteur
      */
     private double getRotatedHalfHeight() {
         double cos = Math.cos(angle);

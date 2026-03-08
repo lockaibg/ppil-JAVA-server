@@ -11,7 +11,6 @@ import java.util.List;
 public class Request {
 
     private final String type;
-    //TODO pas sur que ça soit final ça faudrat vérifier avec les test
     private final List<Double> params = new ArrayList<Double>();
     private final MyColor color;
     private final ShapeList list;
