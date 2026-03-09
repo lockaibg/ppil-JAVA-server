@@ -28,7 +28,6 @@ public class Dessiner extends Frame {
 
         setTitle("Dessin");
         setSize(size, size);
-        //setBackground();
         setLayout(new FlowLayout());
 
         addWindowListener(new WindowAdapter() {
